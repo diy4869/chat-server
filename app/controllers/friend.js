@@ -15,7 +15,7 @@ export default {
   // 获取你申请好友的列表
   find: friend
     .scope(
-      where(['uid', '@user_id']),    
+      where(['uid', '@user_id'], ['isAgree =', 0]),    
       Include.create('user'),
       pagination, // 分页
     )
@@ -23,7 +23,7 @@ export default {
   // 获取哪些人申请
   BeAppliedFor: friend
   .scope(
-    where(['fid', '@user_id']),
+    where(['fid', '@user_id'], ['isAgree !=', 1]),
     Include.create('user'),
     pagination, // 分页
   )

@@ -24,12 +24,12 @@ function H (model) {
     after (result, ctx, next) {
       return result
     },
-    // // data 钩子可以在返回数据到前端之前和捕获异常之后做一些处理
-    // data (err, result, ctx, next) {
-    //   console.log(err)
-    //   console.log(result)
-    //   console.log(ctx)
-    // },
+    // data 钩子可以在返回数据到前端之前和捕获异常之后做一些处理
+    data (err, result, ctx, next) {
+      console.log(err)
+      console.log(result)
+      console.log(ctx)
+    },
     data: send,
     mock: Mock
   })
