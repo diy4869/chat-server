@@ -7,6 +7,7 @@ import { tokenSign, tokenVerify, send } from "../service";
 export default {
   async login(ctx)  {
     const post = ctx.request.body
+    console.log(post)
     let result
     try {
       if (!post.user_id && !post.password) {
