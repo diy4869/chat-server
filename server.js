@@ -11,7 +11,7 @@ import onerror from 'koa-onerror'
 import logger from 'koa-logger'
 import helmet from 'koa-helmet'
 
-// 导入 rouer.js 文件
+// 导入 router.js 文件
 import router from './app/router'
 
 const app = new Koa()
@@ -39,7 +39,7 @@ app
   .use(koaStatic(__dirname + '/app/public'))
   // session
   .use(session(app))
-  // 解析 sequest body
+  // 解析 request body
   // 开启了多文件上传，并设置了文件大小限制
   .use(body({
     multipart: true,

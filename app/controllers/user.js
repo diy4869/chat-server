@@ -13,7 +13,7 @@ export default {
       if (!post.user_id && !post.password) {
         return ctx.body = {
           message: '账号和密码不能为空',
-          stauts: 0
+          status: 0
         }
       } else {
         post.password = md5(post.password)

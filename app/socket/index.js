@@ -5,7 +5,8 @@ const io = require('socket.io')(server)
 const Mock = require('mockjs')
 
 // 需要发送的对象
-var users = {}
+var users = []
+
 io.on('connection', socket => {
   console.log('socket已连接')
   // io.emit('newFriends', 'hello world')
@@ -23,8 +24,10 @@ io.on('connection', socket => {
       console.log(2)
     }
   })
-  console.log(socket)
+  users.push(socket.id)
+  console.log(socket.id)
   console.log(io.sockets)
+  console.log(users)
   // socket.broadcast.emit('send message', 123455)
   console.log('=======')
   socket.on('privateMessage', data => {
@@ -34,13 +37,9 @@ io.on('connection', socket => {
     console.log(io)
     let d = JSON.parse(data)
     console.log(d)
-    console.log(io.sockets)
+    console.log(io)
     console.log(io.sockets.sockets)
-    users.socketId = socket.id
-    users.fromId = private[private.length - 1].user_id
-    users.data = data
-    console.log(users)
-    io.sockets.sockets['Do41fyetaOKMaEP6AAAB'].emit('privateMessage', io.sockets.sockets)
+    io.sockets.sockets[users[0]].emit('privateMessage', d)
     
     
   })
